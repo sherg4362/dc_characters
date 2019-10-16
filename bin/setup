@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+require "bundler/setup"
+require "dc_characters"
+
 set -euo pipefail
 IFS=$'\n\t'
 set -vx

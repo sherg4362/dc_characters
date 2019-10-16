@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
+require "dc_characters"
 
-dc_characters::CLI.new.run
+
+DCCharacters::CLI.new.run
