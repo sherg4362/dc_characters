@@ -1,17 +1,19 @@
 module DCCharacters
   class CLI
-      whos_who_list = []
+
     def ask(question)
       puts question
       gets.chomp
     end
 
     def selected(selection)
-      puts "You selected number:  #{whos_who_list[selection]}"
+      if selection ==
+      puts "You selected number:  #{selection}"
     end
 
 
     def run
+      whos_who_list = []
         puts "Who's who in the DC comic universe \n \n"
         scrapper = Scrapper.new
         whos_who_list = scrapper.character_list

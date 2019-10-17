@@ -1,7 +1,11 @@
 module DCCharacters
   class Scrapper
 
-    def character_list
+    def character_list(url)
+
+      def initialize(url)
+        @characterUrl = url
+      end
       #puts ['Hello', 'World!']
       doc = Nokogiri::HTML(open("https://www.dccomics.com/"))
       links = doc.css("div.grid-title a")
