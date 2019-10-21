@@ -1,23 +1,24 @@
 module DCCharacters
   class Scrapper
 
-    def character_list(url)
+    def self.character_name_url
+      count = 0
+      list = []
 
-      def initialize(url)
-        @characterUrl = url
-      end
-      #puts ['Hello', 'World!']
       doc = Nokogiri::HTML(open("https://www.dccomics.com/"))
-      links = doc.css("div.grid-title a")
-      len = links.length
+      elemLinks = doc.css("div.grid-title a")
+      puts elemLinks.length
 
-      characters = []
-      links.each.with_index(1) do
-           |character, i| characters << "#{i}" + ". " + character.text
-        end
-      #character_1 = links[0].text
-      #puts character_1
-      characters
+      while count < elemLinks.length
+        ch = Character.new
+        ch.character_name = elemLinks[count].text
+        ch.url = elemLinks[count]["href"]
+        list << ch
+
+        count += 1
+      end
+    list
+
     end
   end
 end

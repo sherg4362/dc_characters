@@ -52,3 +52,22 @@ Who's who in the DC comic universe
 Which character would you like to learn more about (enter '1'-'7' or 'exit')
 
 exit
+
+
+=begin
+{} elems
+def initialize(url)
+@characterUrl = url
+end
+puts ['Hello', 'World!']
+doc = Nokogiri::HTML(open("https://www.dccomics.com/"))
+links = doc.css("div.grid-title a")
+len = links.length
+characters = []
+links.each.with_index(1) do
+|character, i| characters << "#{i}" + ". " + character.text
+end
+character_1 = links[0].text
+puts character_1
+characters
+=end
