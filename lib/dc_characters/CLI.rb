@@ -19,12 +19,10 @@ module DCCharacters
 
 
     def run
-      list = Scrapper.character_name_url
-      puts list.last.url
+      #list = Scrapper.character_name_url
+      #puts list.last.url
 
-      display
-
-
+      Scrapper.characterInfo
       end
       #CharacterDetails.details
 
@@ -39,5 +37,11 @@ module DCCharacters
         # character = Character.new
         # puts character
     #end
+
+    def add_index
+      {
+        "Superman" => 48
+      }
+    end
   end
 end
