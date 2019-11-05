@@ -1,55 +1,74 @@
 module DCCharacters
   class CLI
+    @menuList = nil
+    def who_is_who
+      puts "Who is who in the DC character universe, let's find out"
+    end
 
+    def display_menu(menu)
+      menu.each_with_index do |item, index|
+        index += index + 1
+        puts "\t#{index}.#{item.name}"
+      end
+    end
 
+    def instructions
+      selection = ""
+      # while selection != "exit"
+      #   puts "Which character would you like to learn more about.
+      #   Enter a number from 1 to #{@menuList.length} or exit"
+      #   selection = gets.strip
+      #   case selection
+      #   when "1"
+      #     num = selection.to_i
+      #     ##{@menuList[num - 1].name}
+      #     get_Scrapper("superman")
+      #   when "2"
+      #     num = selection.to_i
+      #     #puts "#{@menuList[num - 1].name}"
+      #   when "3"
+      #     num = selection.to_i
+      #     puts "#{@menuList[num - 1].name}"
+      #   when "4"
+      #     num = selection.to_i
+      #     puts "#{@menuList[num - 1].name}"
+      #   when "5"
+      #     num = selection.to_i
+      #     puts "#{@menuList[num - 1].name}"
+      #   when "6"
+      #     num = selection.to_i
+      #     puts "#{@menuList[num - 1].name}"
+      #   when "7"
+      #     num = selection.to_i
+      #     puts "#{@menuList[num - 1].name}"
+      #   when "exit"
+      #     puts "Goodbye"
+      #   else
+      #     puts "Please enter a the correct repsonse"
+      #   end
+      #end
 
-    # def ask(question)
-    #   puts question
-    #   gets.chomp
-    # end
-    #
-    # def selected(selection)
-    #   if selection ==
-    #   puts "You selected number:  #{selection}"
-    # end
+    end
 
-    def display
-      puts "Who's who in the DC comic universe,\n \nSelect from the list of Heroes to learn more \n \n"
+    def get_Scrapper(url)
+      puts Scrapper.send(url)
     end
 
 
     def run
-      list = Scrapper.character_name_url
-      puts list.first.url
-      puts get_characters
-
-
-      # Scrapper.the_flash
+      @menuList = Scrapper.character_name_url
+      who_is_who
+      display_menu(@menuList)
+      instructions
+      get_Scrapper("superman")
+      #puts @menuList[0].name
+      @menuList.select do |item|
+        if item.name.downcase == "superman"
+          item
+        end
+        item
       end
-      #CharacterDetails.details
-
-        #
-        #
-        # scrapper = Scrapper.new
-        # whos_who_list = scrapper.character_list
-        # puts whos_who_list
-        # puts "\n"
-        # selected(ask("Which character would you like to learn more about (enter '1'-'7' or 'exit')"))
-        #
-        # character = Character.new
-        # puts character
-    #end
-
-    def get_characters
-      mobis = Character.new
-      mobis.character_name = "Morbius"
-      mobis.character_name
     end
 
-    def add_index
-      {
-        "Superman" => 48
-      }
-    end
   end
 end

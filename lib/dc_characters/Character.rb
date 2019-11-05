@@ -1,6 +1,6 @@
 module DCCharacters
   class Character
-    attr_accessor :character_name, :url, :index
+    attr_accessor :name, :url, :index
 
   end
 end
