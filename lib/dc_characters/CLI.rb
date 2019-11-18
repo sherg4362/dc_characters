@@ -6,48 +6,48 @@ module DCCharacters
       puts " "
       puts "======================  Loading ======================"
       puts " "
-      who_is_who_list
+      who_is_who_menu_list
       puts " "
       puts "Which DC Universe character would you like to learn more about.  Enter a number from 1 to 7, type exit to leave"
 
       while selection != "exit" do
-        selection = gets.strip
+          selection = gets.strip
         case (selection)
           when "1"
-            build_character_facts(selection)
+            get_character_fact_sheet(selection)
           when "2"
-            build_character_facts(selection)
+            get_character_fact_sheet(selection)
           when "3"
-            build_character_facts(selection)
+            get_character_fact_sheet(selection)
           when "4"
-            build_character_facts(selection)
+            get_character_fact_sheet(selection)
           when "5"
-            build_character_facts(selection)
+            get_character_fact_sheet(selection)
           when "6"
-            build_character_facts(selection)
+            get_character_fact_sheet(selection)
           when "7"
-            build_character_facts(selection)
+            get_character_fact_sheet(selection)
           when "exit"
             puts "Goodbye"
           end
-      #Scrapper.character_page(Character.all[selection.to_i - 1].url)
+
       end
-
     end
 
-    def build_character_facts(selection)
-      # puts selection.to_i
-      character_name_to_lookup = Character.all[selection.to_i - 1].name.gsub(' ', '_').downcase
-      details = Scrapper.send(character_name_to_lookup)
-      Character.all[selection.to_i - 1].details = details
-      puts Character.all[selection.to_i - 1].details.powers
-      #puts CharacterFacts.facts
-      # Scrapper.character_page(Character.all[selection.to_i - 1].url)
+    def display_character_fact_sheet(obj)
+      puts "Here is the information - #{obj.name} #{obj.back_story}"
     end
 
-    def who_is_who_list
-      Character.all.each_with_index do |character_obj, index|
-        puts "#{index + 1}. #{character_obj.name}"
+    def get_character_fact_sheet(selection)
+      character_fact_sheet_name = Character.all[selection.to_i - 1].name.gsub(' ', '_').downcase
+      character_fact_sheet = Scrapper.send(character_fact_sheet_name)
+      display_character_fact_sheet(character_fact_sheet)
+      #puts character_fact_sheet.back_story
+    end
+
+    def who_is_who_menu_list
+      Character.all.each.with_index(1) do |character_obj, index|
+        puts "#{index}. #{character_obj.name}"
       end
     end
 
@@ -55,13 +55,7 @@ module DCCharacters
       puts "Who is who in the DC character universe, let's find out"
       Scrapper.character_name_url
       mainMenu
-      #Scrapper.character_page(Character.all[1].url)
 
-
-
-
-      #puts Character.all[1].name
-      #puts Character.all[1].url
     end
 
   end
