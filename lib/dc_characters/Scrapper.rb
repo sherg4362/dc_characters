@@ -28,7 +28,28 @@ module DCCharacters
         # Right COLUMN
         right_column = doc.css("div.right-col")
         # CHARACTER NAME\
-        character_fact_sheet = doc.css("h1.field-content").text
+        character_fact_sheet = doc.css("h1.field-content").text + "\n\n"
+
+        # SUPERMAN BACK STORY
+          character_fact_sheet += back_story = "Back Story:" + "\n\n"
+          character_fact_sheet += doc.css("div.field-item p")[2].text + "\n\n"
+          character_fact_sheet += doc.css("div.field-item p")[3].text + "\n\n"
+          character_fact_sheet += doc.css("div.field-item p")[4].text + "\n\n"
+          character_fact_sheet += doc.css("div.field-item p")[5].text + "\n\n"
+        # SUPERMAN Facts
+          character_fact_sheet += "Character Facts \n\n"
+       # SUPERMAN POWERS
+          character_fact_sheet += left_column.css("div.views-field span")[0].text + "\n"
+          character_fact_sheet += left_column.css("div.field-content")[0].text + "\n\n"
+        # SUPERMAN ALTER EGO
+          character_fact_sheet += left_column.css("div.views-field span")[1].text + "\n"
+          character_fact_sheet += left_column.css("div.field-content")[1].text + "\n\n"
+        # SUPERMAN REAL NAME
+          character_fact_sheet += left_column.css("div.field-items")[2].text + ":\n"
+          character_fact_sheet += left_column.css("div.field-item")[3].text + "\n\n"
+        # SUPERMAN SUPER OCCUPATION
+          character_fact_sheet += right_column.css("div.field-items")[4].text + ":\n"
+          character_fact_sheet += right_column.css("div.field-items")[5].text
 
         character_fact_sheet
     end
