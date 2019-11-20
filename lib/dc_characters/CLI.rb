@@ -12,21 +12,22 @@ module DCCharacters
 
       while selection != "exit" do
           selection = gets.strip
+
         case (selection)
-          when "1"
-            get_character_fact_sheet(selection)
+        when "1"
+             build_character_fact_sheet(selection)
           when "2"
-            get_character_fact_sheet(selection)
+            build_character_fact_sheet(selection)
           when "3"
-            get_character_fact_sheet(selection)
+            build_character_fact_sheet(selection)
           when "4"
-            get_character_fact_sheet(selection)
+            build_character_fact_sheet(selection)
           when "5"
-            get_character_fact_sheet(selection)
+            build_character_fact_sheet(selection)
           when "6"
-            get_character_fact_sheet(selection)
+            build_character_fact_sheet(selection)
           when "7"
-            get_character_fact_sheet(selection)
+            build_character_fact_sheet(selection)
           when "exit"
             puts "Goodbye"
           end
@@ -34,26 +35,27 @@ module DCCharacters
       end
     end
 
-    def display_character_fact_sheet(obj)
-      puts "Here is the information - #{obj.name} #{obj.back_story}"
+    def display_character_fact_sheet(character_fact_sheet)
+      puts character_fact_sheet
     end
 
-    def get_character_fact_sheet(selection)
+    def build_character_fact_sheet(selection)
       character_fact_sheet_name = Character.all[selection.to_i - 1].name.gsub(' ', '_').downcase
-      character_fact_sheet = Scrapper.send(character_fact_sheet_name)
-      display_character_fact_sheet(character_fact_sheet)
-      #puts character_fact_sheet.back_story
+      #character_fact_sheet = Scrapper.send(character_fact_sheet_name, selection)
+      fact_sheet = Scrapper.send(character_fact_sheet_name)
+      display_character_fact_sheet(fact_sheet)
     end
 
     def who_is_who_menu_list
+
       Character.all.each.with_index(1) do |character_obj, index|
         puts "#{index}. #{character_obj.name}"
       end
     end
 
     def run
+      Scrapper.character_name
       puts "Who is who in the DC character universe, let's find out"
-      Scrapper.character_name_url
       mainMenu
 
     end
