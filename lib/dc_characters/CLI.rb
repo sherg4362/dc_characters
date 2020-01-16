@@ -1,64 +1,58 @@
 module DCCharacters
   class CLI
-
-    def mainMenu
-      selection = nil
-      puts " "
-      puts "======================  Loading ======================"
-      puts " "
-      who_is_who_menu_list
-      puts " "
-      puts "Which DC Universe character would you like to learn more about.  Enter a number from 1 to 7, type exit to leave"
-
-      while selection != "exit" do
-          selection = gets.strip
-
-        case (selection)
-        when "1"
-             build_character_fact_sheet(selection)
-          when "2"
-            build_character_fact_sheet(selection)
-          when "3"
-            build_character_fact_sheet(selection)
-          when "4"
-            build_character_fact_sheet(selection)
-          when "5"
-            build_character_fact_sheet(selection)
-          when "6"
-            build_character_fact_sheet(selection)
-          when "7"
-            build_character_fact_sheet(selection)
-          when "exit"
-            puts "Goodbye"
-          end
-
-      end
-    end
-
-    def display_character_fact_sheet(character_fact_sheet)
-      puts character_fact_sheet
-    end
-
-    def build_character_fact_sheet(selection)
-      character_fact_sheet_name = Character.all[selection.to_i - 1].name.gsub(' ', '_').downcase
-      #character_fact_sheet = Scrapper.send(character_fact_sheet_name, selection)
-      fact_sheet = Scrapper.send(character_fact_sheet_name)
-      display_character_fact_sheet(fact_sheet)
-    end
-
-    def who_is_who_menu_list
-
-      Character.all.each.with_index(1) do |character_obj, index|
-        puts "#{index}. #{character_obj.name}"
-      end
-    end
+    INDEX_OF_CHARACTERS_URL = "https://www.dccomics.com/characters"
 
     def run
-      Scrapper.character_name
-      puts "Who is who in the DC character universe, let's find out"
-      mainMenu
+      list_of_dc_characters = Scrapper.list_of_characters(INDEX_OF_CHARACTERS_URL)
+
+      Character.make_collection_of_characters(list_of_dc_characters)
+      list_whos_who_in_dc_universe(Character.characters)
+      menu(Character.characters)
+      exit_dc_characters
 
     end
 
-  end
+    def menu(characters)
+      input = nil
+      while input != "exit"
+        puts "Which DC Universe character would you like to learn more about.  Enter a number from 1 to 7, type list to see list of charaacters or type exit to leave"
+        input = gets.strip.downcase
+
+          if input.to_i > 0
+            #call function and pass in selection
+            puts "You selected #{input}"
+          elsif input == "list"
+          list_whos_who_in_dc_universe(characters)
+          else
+          puts "\n"
+          puts "Please type 1 to 7, list or exit"
+        end
+      end
+    end
+
+    def list_whos_who_in_dc_universe(character_array)
+      puts "======================"
+        character_array.each.with_index(1) do |char, i|
+          puts "#{i}. #{char.name}"
+        end
+      puts "======================"
+      # puts <<-DOC.gsub /^\s*/, ''
+      #     Who's who in the DC Universe
+      #       1. Superman
+      #       2. Batman
+      #       3. Wonder Woman
+      #       4. Green Lantern
+      #       5. The Flash
+      #       6. Aquaman
+      #       7. Cyborg
+      #     DOC
+    end
+
+    def exit_dc_characters
+      puts "\n"
+      puts "There is more to learn next time in Who's who in the DC Universe"
+    end
+
+  end  #Class end
+
 end
