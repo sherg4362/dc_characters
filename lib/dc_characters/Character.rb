@@ -1,7 +1,6 @@
 require 'pry'
 module DCCharacters
   class Character
-
     attr_accessor :name, :url, :powers, :back_story, :alter_ego, :real_name, :occupation, :viewed
     @@characters = []
 
@@ -26,11 +25,9 @@ module DCCharacters
         @@characters
       end
 
-      def add_attributes_to_characters
+      def add_attributes_to_characters(list_of_character_attributes)
 
       end
-
-
 
     end
 

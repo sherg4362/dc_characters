@@ -5,7 +5,7 @@ module DCCharacters
     def run
       # Calls Scraper method to scrape index page navigation for characters
       # Returns a list of characters
-      list_of_dc_characters = Scrapper.list_of_characters(INDEX_OF_CHARACTERS_URL)
+      list_of_dc_characters = CharacterScraper.list_of_characters(INDEX_OF_CHARACTERS_URL)
       # Makes a collection of instances from Charater class
       Character.make_collection_of_characters(list_of_dc_characters)
 
@@ -56,12 +56,12 @@ module DCCharacters
       puts "There is more to learn next time in Who's who in the DC Universe"
     end
 
-    def get_input(input)
-      selection = nil
-      selection = input.to_i - 1
-      puts "This is #{Character.characters[selection].name}"
-      Scrapper.get_character_page(Character.characters[selection].url)
-    end
+    # def get_input(input)
+    #   selection = nil
+    #   selection = input.to_i - 1
+    #   puts "This is #{Character.characters[selection].name}"
+    #   Scrapper.get_character_page(Character.characters[selection].url)
+    # end
 
   end  #Class end
 

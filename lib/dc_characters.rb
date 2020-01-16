@@ -1,5 +1,6 @@
 require "nokogiri"
 require "open-uri"
+require "dc_characters/CharacterScraper"
 require "dc_characters/Scrapper"
 require "dc_characters/Character"
 require "dc_characters/CharacterFacts"
