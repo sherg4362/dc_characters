@@ -56,12 +56,12 @@ module DCCharacters
       puts "There is more to learn next time in Who's who in the DC Universe"
     end
 
-    # def get_input(input)
-    #   selection = nil
-    #   selection = input.to_i - 1
-    #   puts "This is #{Character.characters[selection].name}"
-    #   Scrapper.get_character_page(Character.characters[selection].url)
-    # end
+    def get_input(input)
+      selection = nil
+      selection = input.to_i - 1
+      puts "This is #{Character.characters[selection].name}"
+      CharacterFactsScraper.get_character_page(Character.characters[selection].url)
+    end
 
   end  #Class end
 
