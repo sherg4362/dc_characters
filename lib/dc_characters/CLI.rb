@@ -59,8 +59,8 @@ module DCCharacters
     def get_input(input)
       selection = nil
       selection = input.to_i - 1
-      puts "This is #{Character.characters[selection].name}"
-      CharacterFactsScraper.get_character_page(Character.characters[selection].url)
+      # puts "This is #{Character.characters[selection].name}"
+      CharacterFactsScraper.get_character_page(selection)
     end
 
   end  #Class end
