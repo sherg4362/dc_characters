@@ -1,5 +1,7 @@
 # DcCharacters
 
+This CLI App explores who is who in the Justice League basic rooster.  It utilizes the DC Universe website (https://www.dccomics.com/).  On the start the app scrapes the site to for the basic rooster information.
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/dc_characters`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem

@@ -9,12 +9,6 @@ module DCCharacters
       links.slice(8, links.length)
     end
 
-    def self.get_character_page(character_page_url)
-      # puts BASEURL + character_page_url
-      html = Nokogiri::HTML(open(BASEURL + character_page_url))
-      puts html
-    end
-
   end
 
 end

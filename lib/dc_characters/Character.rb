@@ -1,13 +1,14 @@
 require 'pry'
 module DCCharacters
   class Character
-    attr_accessor :name, :url, :viewed, :powers, :back_story, :alter_ego
+    attr_accessor :name, :url, :viewed, :powers, :back_story, :alter_ego, :real_name, :occupation
     @@characters = []
 
     def initialize(character)
       self.name = character.text
       self.url = character.attribute('href')
       @@characters << self
+      self.viewed = false
     end
 
     def self.make_collection_of_characters(character_array)
