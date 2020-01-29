@@ -67,7 +67,7 @@ module DCCharacters
 
     # SCRAPE SUPERMAN CHARACTER FACTS
     def self.superman(html, selection)
-      get_viewed(selection)
+      # get_viewed(selection)
       # LEFT COLUMN
       left_column = left_column(html)
       # Right COLUMN

@@ -1,6 +1,6 @@
 require "nokogiri"
 require "open-uri"
-require 'colorize'
+require "colorize"
 require "dc_characters/CharacterScraper"
 require "dc_characters/Scrapper"
 require "dc_characters/Character"
